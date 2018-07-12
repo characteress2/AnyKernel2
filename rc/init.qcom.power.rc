@@ -59,22 +59,22 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay "22000 537600:15000 768000:32000 1209600:30000"
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 300
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 42000
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load 100
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate 30000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq 307200
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy 0
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "45 460800:35 537600:49 844800:60 902400:75 1132800:85 1286400:90 1440000:95 1593600:99"
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads "10 307200:15 480000:22 729600:34 844800:41 1036800:53 1228800:60 1401600:68 1728000:85"
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time 45000
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis 0
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 307200
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack -1
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 0
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down 1
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows 0
     chmod 0777 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1324800
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 307200
     chmod 0444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction 0
     write /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration 0
     
     chmod 0644 /sys/module/workqueue/parameters/power_efficient
@@ -84,14 +84,14 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor interactive
     chmod 0444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
     chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "35 748800:30 902400:32 1132800:35 1286400:37 1440000:65 1670400:72 1747200:85 1824000:99"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads "307200:19 556600:20 806400:25 940800:30 1190400:40 1248000:50 1555200:60 1708800:70 1824000:80 1996800:90 2265600:100"
     chmod 0644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack -1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq 307200
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate 40000
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "40000 902400:55000 1286400:33000 1670400:32000"
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 300
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 40000
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay "0"
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load 100
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif 1
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost 0
@@ -102,32 +102,32 @@ on enable-low-power
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/boostpulse_duration 0
     write /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy 0
     chmod 0777 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 1824000
+    write /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq 307200
     chmod 0444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
-    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 1
+    write /sys/devices/system/cpu/cpu2/cpufreq/interactive/enable_prediction 0
 
     # Re-enable thermal hotplug
     write /sys/module/msm_thermal/core_control/enabled 1
 
     # Input boost configuration
     chmod 0644 /sys/module/cpu_boost/parameters/input_boost_freq
-    write /sys/module/cpu_boost/parameters/input_boost_freq 0:748800
-    write /sys/module/cpu_boost/parameters/input_boost_freq 1:0
-    write /sys/module/cpu_boost/parameters/input_boost_freq 2:902400
-    write /sys/module/cpu_boost/parameters/input_boost_freq 3:0 
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:748800"
-    write /sys/module/cpu_boost/parameters/input_boost_freq "1:0"
-    write /sys/module/cpu_boost/parameters/input_boost_freq "2:902400"
-    write /sys/module/cpu_boost/parameters/input_boost_freq "3:0"
-    write /sys/module/cpu_boost/parameters/input_boost_freq "0:748800  1:0 2:902400 3:0"
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0
+    write /sys/module/cpu_boost/parameters/input_boost_freq 0 
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0"
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0"
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0"
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0"
+    write /sys/module/cpu_boost/parameters/input_boost_freq "0"
     chmod 0644 /sys/module/cpu_boost/parameters/input_boost_ms
-    write /sys/module/cpu_boost/parameters/input_boost_ms 35
+    write /sys/module/cpu_boost/parameters/input_boost_ms 0
 
     # Setting b.L scheduler parameters
     write /proc/sys/kernel/sched_boost 0
     write /proc/sys/kernel/sched_migration_fixup 1
-    write /proc/sys/kernel/sched_upmigrate 95
-    write /proc/sys/kernel/sched_downmigrate 90
+    write /proc/sys/kernel/sched_upmigrate 70
+    write /proc/sys/kernel/sched_downmigrate 65
     write /proc/sys/kernel/sched_freq_inc_notify 400000
     write /proc/sys/kernel/sched_freq_dec_notify 400000
     write /proc/sys/kernel/sched_spill_nr_run 3
@@ -165,21 +165,21 @@ on enable-low-power
     start iop
 
     # VM
-    write /proc/sys/vm/dirty_background_ratio 20
+    write /proc/sys/vm/dirty_background_ratio 10
     write /proc/sys/vm/dirty_expire_centisecs 100
-    write /proc/sys/vm/swappiness 60
-    write /proc/sys/vm/vfs_cache_pressure 60
+    write /proc/sys/vm/swappiness 0
+    write /proc/sys/vm/vfs_cache_pressure 40
     
     
 
     # Update cpusets now that boot is complete and we want better load balancing
     write /dev/cpuset/top-app/cpus 0-3
-    write /dev/cpuset/foreground/boost/cpus 0-2
-    write /dev/cpuset/foreground/cpus 0-2
-    write /dev/cpuset/background/cpus 0-1
-    write /dev/cpuset/system-background/cpus 0-2
+    write /dev/cpuset/foreground/boost/cpus 0-3
+    write /dev/cpuset/foreground/cpus 0-3
+    write /dev/cpuset/background/cpus 0
+    write /dev/cpuset/system-background/cpus 0-1
 
-	write /sys/class/kgsl/kgsl-3d0/max_gpuclk 624000000
+	write /sys/class/kgsl/kgsl-3d0/max_gpuclk 780000000
 	write /sys/class/kgsl/kgsl-3d0/devfreq/governor msm-adreno-tz
 service charger /sbin/chargeonlymode
     class charger
